@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--
-        For demonstration purposes, the `title` is dynamically set here based on
-        your `sails.config.appName` to show that you can inject data into layouts
-        exactly the same way as with your other view templates.
-    -->
+<head>
     <title><%- title %></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
     <!--
 
@@ -20,6 +15,7 @@
       as you would normally: using <link/> tags.
       
     -->
+    <link type="text/css" href="/styles/app.css" rel='stylesheet'/>
 
     <!--
 
@@ -33,64 +29,83 @@
       
     -->
 
-  </head>
+</head>
 
-  <body>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jukebox</a>
+        </div>
 
-    <!-- Include the view file for the current controller/route -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <% var active = req.target.view %>
+                <li
+                        <% if(active === 'client') { %>
+                        class="active"
+                        <% } %>
+                        >
+                    <a href="/client">Client</a>
+                </li>
+                <li
+                        <% if(active === 'player') { %>
+                        class="active"
+                        <% } %>
+                        >
+                    <a href="/player">Player</a></li>
+                <!--<li class="dropdown">-->
+                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>-->
+                <!--<ul class="dropdown-menu">-->
+                <!--<li><a href="#">Action</a></li>-->
+                <!--<li><a href="#">Another action</a></li>-->
+                <!--<li><a href="#">Something else here</a></li>-->
+                <!--<li class="divider"></li>-->
+                <!--<li><a href="#">Separated link</a></li>-->
+                <!--<li class="divider"></li>-->
+                <!--<li><a href="#">One more separated link</a></li>-->
+                <!--</ul>-->
+                <!--</li>-->
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <!--<ul class="nav navbar-nav navbar-right">-->
+        <!--<li><a href="#">Link</a></li>-->
+        <!--<li class="dropdown">-->
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>-->
+        <!--<ul class="dropdown-menu">-->
+        <!--<li><a href="#">Action</a></li>-->
+        <!--<li><a href="#">Another action</a></li>-->
+        <!--<li><a href="#">Something else here</a></li>-->
+        <!--<li class="divider"></li>-->
+        <!--<li><a href="#">Separated link</a></li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--</ul>-->
+    </div>
+    <!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- Include the view file for the current controller/route -->
+<div id="main" class="container">
     <%- body %>
+</div>
+<script type="text/javascript" data-main="/js/main.js" src="/bower_components/requirejs/require.js"></script>
 
 
-    <!--
-
-      Client-side Javascript
-      ========================
-
-      You can import any js files in your `assets` directory as you would 
-      normally: using <script></script> tags.
-
-      Here's an example of importing a few dependencies, in order:
-    -->
-    <!-- Bring in the socket.io client -->
-    <script type="text/javascript" src="/js/socket.io.js"></script>
-    <!-- then beef it up with some convenience logic for talking to Sails.js -->
-    <script type="text/javascript" src="/js/sails.io.js"></script>
-    <!-- listen on socket.io for incoming messages -->
-    <script type="text/javascript" src="/js/app.js"></script>
-
-    <!-- Your scripts here? -->
-    <!-- Your scripts here? -->
-    <!-- Your scripts here? -->
-
-
-    <!--
-
-      Looking for client-side CoffeeScript or TypeScript?
-      ================================================
-
-      CoffeeScript and TypeScript precompilation are not installed by default,
-      but if you'd like to mix those features in, it is straightforward to
-      `npm install` the relevant grunt community modules and modify your Gruntfile
-      to use them.
-
-    -->
-
-
-
-    <!--
-
-      Another way: The Asset Linker
-      ========================
-
-      Sails supports a Grunt-based asset linker, to automatically inject 
-      <link> and <script> tags, as well any client-side templates you're using
-      into your HTML layouts and views, respecting dependencies.
-
-      You created this Sails app with the asset linker disabled.
-      If you change your mind, check out the docs on the subject:
-      http://sailsjs.org/#!documentation/asset-management
-
-    -->
-
-    </body>
+</body>
 </html>

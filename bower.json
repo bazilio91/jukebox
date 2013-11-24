@@ -1,0 +1,16 @@
+{
+    "name": "jukebox",
+    "version": "0.0.0",
+    "dependencies": {
+        "jquery": "~2",
+        "lodash": "*",
+        "backbone": "~1",
+        "requirejs": "~2",
+        "modernizr": "~2",
+        "bootstrap": "https://github.com/twbs/bootstrap.git",
+        "socket.io-client": "https://github.com/bazilio91/socket.io-client.git",
+        "loglevel": "*",
+        "cookies-js": "*"
+    },
+    "devDependencies": {}
+}
